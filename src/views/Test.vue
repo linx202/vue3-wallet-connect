@@ -41,9 +41,6 @@ const getBalance = async() => {
         <a-descriptions-item label="Balance">
           {{ balance }}
         </a-descriptions-item>
-        <a-descriptions-item label="Address">
-          No. 18, Wantang Road, Xihu District, Hangzhou, Zhejiang, China
-        </a-descriptions-item>
       </a-descriptions>
     </div>
   </div>

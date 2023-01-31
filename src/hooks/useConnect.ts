@@ -1,4 +1,3 @@
-import useSetting from './useSetting'
 import useEthConnect from './useEthConnect'
 import useAppConnect from './useAppConnect'
 
@@ -16,8 +15,6 @@ const wallet: WalletInfo = reactive({
   chainId: '',
   web3: null
 })
-
-const { isMobile } = useSetting()
 
 const { connect: appConnect, disconnect: appDisconnect, address: appAddress, web3: appWeb3, chainId: appChainId, switchChain: appSwitchChain } = useAppConnect()
 
@@ -41,6 +38,13 @@ watch([pcChainId, appChainId], v => {
     wallet.chainId = v[1]
   }
 })
+
+const isMobile = () => {
+  const userAgentInfo = navigator.userAgent
+  const Agents = ['Android', 'iPhone', 'SymbianOS', 'Windows Phone', 'iPad', 'iPod']
+  const getArr = Agents.filter(i => userAgentInfo.includes(i))
+  return !!getArr.length
+}
 
 const setWallet = (walletInfo:WalletInfo) => {
   wallet.address = walletInfo.address
